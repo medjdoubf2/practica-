@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">                                                                   
+  <title>Dir Mensajería</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .fade-in {
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+    }
+
+    /* Estilo para el encabezado con imagen de fondo */
+    header {
+      background-image: url('./img/recevoir\ p\ sourir\ femme612x612.jpg'); /* imagen de fondo del encabezado */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      position: relative;
+      padding: 5rem 0;
+    }
+
+    /* Estilo para el logo encima del título */
+    .logo-above-title {
+      text-align: center;
+      margin-bottom: 20px; /* Espacio entre el logo y el título */
+    }
+
+    /* Estilo para el fondo detrás del logotipo */
+    .logo-background {
+      position: absolute;
+      top: 10%; /* Ajusta la posición según sea necesario */
+      left: 0;
+      right: 0;
+      height: 100px; /* Altura del fondo detrás del logo */
+      background-image: url(./img/logo/Logo\ 1\ -\ copia.jpg); /* logo1 */
+      background-size: cover;
+      background-position: center;
+      z-index: 0; /* Asegúrate de que esté detrás del logo */
+    }
+
+    /* Estilo para el texto del encabezado con gradiente */
+    header h1 {
+      background: linear-gradient(to right, #ff0000, #fd8282);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      margin-top: 20px; /* Espacio superior agregado */
+    }
+
+    header p {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      font-weight: bold; /* Negrita */
+      color: #ff4500; /* Color rojo */
+      font-size: 1.5rem; /* Tamaño de fuente aumentado */
+      margin-top: 10px; /* Espacio superior agregado */
+    }
+
+    /* Estilo para el texto adicional */
+    .additional-text {
+      font-weight: bold; /* Negrita */
+      color: #ff0000; /* Color 1 */
+      font-size: 1.5rem; /* Tamaño de fuente */
+      margin-top: 20px; /* Espacio superior */
+    }
+
+    .additional-text span {
+      color: #cccccc; /* Color 2 */
+    }
+
+    /* Estilo para la sección de servicios con imagen de fondo */
+    #servicios {
+      background-image: url('./img/Delivry\ Rk3n8QLjyJDUO2EJHShX0iGrYBwFY.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+
+    #servicios h2 {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .card {
+      height: 100%;
+    }
+
+    .card-img-top {
+      object-fit: cover;
+      height: 200px;
+    }
+
+    /* Estilo para el logo alineado a la izquierda */
+    .logo-above-title {
+      display: flex;
+      margin-bottom: 20px;
+      justify-content: flex-start; /* Alinear a la izquierda */
+      padding-left: 0px; /* Espacio a la izquierda */
+    }
+
+    .logo-above-title img {
+      width: 100px; /* Tamaño del logo */
+      margin-right: 20px; /* Espacio entre el logo y el título */
+      margin-top: -8mm; /* Mover el logo hacia arriba 8 mm */
+    }
+
+    .logo {
+      width: 108px; /* Tamaño del logo reducido */
+      height: auto;
+      opacity: 1; /* Aumentar opacidad */
+      transition: opacity 0.3s ease; /* Transición suave */
+    }
+
+    .btn-saber-mas {
+      margin-top: 10px; /* Ajustar el margen para alinear los botones */
+      position: relative; /* Para el posicionamiento del botón */
+    }
+
+    /*  separar secciones */
+    hr {
+      margin: 40px 0; /* Espaciado vertical para las líneas separadoras */
+    }
+
+    /* Estilo para los iconos del header */
+    .navbar-brand i {
+      color: black; /* Cambiar color de los iconos a negro */
+    }
+
+    /* Ajuste del menú desplegable */
+    .dropdown {
+      position: relative; /* Cambiado a relativo */
+      margin-left: 10px; /* Reducido el margen izquierdo para acercar el menú */
+    }
+
+    /* Ajuste de la sección de servicios y contacto */
+    .navbar-nav {
+      margin-left: 0; /* Asegúrate de que no haya margen negativo */
+    }
+
+    /* Asegurar que el menú no oculte el contacto */
+    .nav-item {
+      position: relative;
+    }
+
+    /* Estilo para el recuadro de servicios */
+    .service-box {
+      background-color: rgba(255, 10, 10, 0.5); /* Color rojo pálido */
+      padding: 18px; /* Aumentar el padding para hacerlo más grande (20% más) */
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: left;
+      height: 100%; /* Aumentar la altura del cuadro */
+    }
+
+    /* Estilo para los contenedores */
+    .button-container {
+      display: flex;
+      justify-content: flex-start; /* Alineación a la izquierda */
+      gap: 10px; /* Espacio entre botones */
+      margin-top: 10px; /* Espacio superior para los botones */
+    }
+
+    /* Estilo para las secciones de texto e imagen */
+    .info-section {
+      display: flex;
+      flex-direction: column; /* Cambiado a columna para que la imagen esté debajo del texto */
+      align-items: center; /* Centrar elementos */
+      margin: 40px 0;
+    }
+
+    .info-section img {
+      max-width: 300px; /* Ajusta el tamaño de la imagen */
+      margin-top: 10px; /* Espacio superior entre texto e imagen */
+    }
+
+    .info-section-text {
+      max-width: 600px; /* Ajusta el ancho del texto */
+      font-size: 1.2rem; /* Tamaño de fuente */
+      color: #333; /* Color del texto */
+      text-align: center; /* Centrar texto */
+    }
+
+    /* Estilo para los textos destacados */
+    .highlight {
+      color: rgb(66, 50, 26); /* Color rojo para textos destacados */
+      font-weight: bold; /* Negrita */
+    }
+
+    /* Estilos adicionales para el div del contacto */
+    .contact-info {
+      background-color: rgb(40, 32, 20); /* Fondo negro */
+      padding: 10px; /* Espaciado interno */
+      color: lightgray; /* Color de texto gris claro */
+      display: flex; /* Usar flexbox para la disposición */
+      justify-content: space-between; /* Espacio entre los elementos */
+      align-items: center; /* Alineación vertical centrada */
+    }
+
+    .contact-details {
+      text-align: left; /* Alinear texto a la izquierda */
+    }
+
+    .contact-info span {
+      color: red; /* Color rojo para los símbolos */
+    }
+
+    /* Estilo para el footer */
+    .footer-links {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* Espacio entre el correo y los enlaces */
+      padding: 20px;
+      background-color: #f8f9fa; /* Fondo claro para el footer */
+    }
+
+    .footer-links a {
+      color: #f0a22e; /* Color de los enlaces */
+      text-decoration: none; /* Sin subrayado */
+      margin-left: 15px; /* Espacio entre enlaces */
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline; /* Subrayar al pasar el mouse */
+    }
+
+    .social-icons i {
+      color: rgb(255, 0, 17); /* Color de los iconos de redes sociales */
+      margin-left: 10px; /* Espacio entre iconos */
+    }
+
+    .home-icon {
+      color: red; /* Color del icono de inicio */
+      margin-right: 10px; /* Espacio a la derecha */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🧭 Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-phone-alt" style="color: red;"></i> +34 686462806 &nbsp; <!-- Cambiado a rojo -->
+        <i class="fas fa-envelope" style="color: red;"></i> franpuig2@yahoo.com <!-- Cambiado a rojo -->
+      </a>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="dropdown text-end mb-3"> <!-- Mueve el dropdown aquí -->
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="navbar-toggler-icon"></span> <!-- Icono de hamburguesa -->
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+           <li><a class="dropdown-item" href="#contacto">Contacto</a></li>
+          <li><a class="dropdown-item" href="https://clientes.dirmensajeria.com:444/DlWebVWE/Login.aspx">acceso cliente</a></li>
+          <li><a class="dropdown-item" href="https://dirmensajeria.com/blog/">Blog</a></li>
+          <li><a class="dropdown-item" href="https://dirmensajeria.com/ecommerce/">E-comerce</a></li>
+          <li><a class="dropdown-item" href="https://dirmensajeria.com/picking/">Picking</a></li>
+          <li><a class="dropdown-item" href="https://dirmensajeria.com/packing/">Packing</a></li>
+          <li><a class="dropdown-item" href="https://dirmensajeria.com/quienes-somos/?_gl=1*yej2hd*_ga*NjMzODI1NDYwLjE3NTg4ODYwNjA.*_ga_X02RBW6YYN*czE3NTk2OTQwMzIkbzckZzEkdDE3NTk2OTYyNDEkajYwJGwwJGgw*_ga_MNWBHC1GXW*czE3NTk2OTQwMzIkbzckZzEkdDE3NTk2OTYyNDEkajYwJGwwJGgw">Sobre Nosotros</a></li>
+          <li><a class="dropdown-item" href="#servicios">Servicio 7</a></li>
+          <li><a class="dropdown-item" href="#servicios">Servicio 8</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 🧾 Hero -->
+  <header class="text-center fade-in">
+    <div class="container">
+      <div class="logo-above-title">
+        <img src="./img/logo/Logo 1 - copia.jpg" alt="Logotipo de la Empresa" class="logo" style="width: 100px;"> <!-- Logotipo añadido encima del título -->
+      </div>
+      <h1 class="display-4">Soluciones logísticas rápidas y seguras</h1>
+      <p class="lead">Cobertura nacional, atención personalizada y tecnología de vanguardia.</p>
+      <hr> 
+      <a href="#contacto" class="btn btn-danger">Solicita tu envío</a>
+    </div>
+  </header>
+
+  <hr>
+
+  <!-- Espacio para el video -->
+  <section class="py-5 fade-in">
+    <div class="container text-center">
+      <h2>Video Informativo</h2>
+      <iframe src="./img/video/principal 640_adpp_is.mp4" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <hr class="my-4">
+
+    <!-- Texto y botón -->
+    <div class="row">
+      <div class="col-md-8 text-center">
+        <h3 style="font-weight: bold; color: red; font-style: italic;">Gestión Logística y de Transporte</h3>
+        <a href="#servicios" class="btn btn-danger btn-saber-mas">Saber más</a>
+      </div>
+      <div class="col-md-4">
+        <div class="border p-3 bg-light">
+          <h5>¿Por qué contar con un gestor que te acompañe en la cadena de suministros?</h5>
+          <p>Porque la logística ya no es solo mover productos: es tomar decisiones estratégicas que afectan directamente a tus costes, plazos y reputación. Y en ese camino, no estás sola. Un gestor experto te acompaña para que cada envío, cada trámite y cada elección esté alineada con tus objetivos. Te ayuda a anticipar lo que otros pasan por alto, a convertir la complejidad en claridad, y a liberar tu tiempo para lo que realmente importa: hacer crecer tu negocio con confianza. Cuando la logística fluye, tú también.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- 🚚 Servicios -->
+  <section id="servicios" class="py-5 fade-in">
+    <div class="container">  
+      <div class="row">
+        <div class="col-md-4">
+          <div class="service-box">
+            <h5 class="service-text">Nuestros Servicios</h5>
+            <p class="service-text">Acompañamos a pequeñas y medianas empresas en la gestión de la cadena de suministros.</p>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="row text-center">
+            <div class="col-md-3 mb-4">
+              <div class="card">
+                <img src="./img/transport national exp.jpg" class="card-img-top" alt="Transporte Nacional">
+                <div class="card-body">
+                  <h5 class="card-title">Transporte Nacional</h5>
+                  <p class="card-text"><br>Entregas rápidas y seguras a nivel nacional.</p>
+                  <br>
+                  <br>
+                  <br>
+                  <a href="#transporte-nacional" class="btn btn-danger btn-saber-mas">Saber más</a> <!-- Botón alineado -->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mb-4">
+              <div class="card">
+                <img src="./img/avion tren camion oDKfykt3dGWV5toLr.jpg" class="card-img-top" alt="Transporte Internacional">
+                <div class="card-body">
+                  <h5 class="card-title">Transporte Internacional</h5>
+                  <p class="card-text"><br>Soluciones para envíos internacionales.</p>
+                  <br>
+                  <br>
+                  <a href="#transporte-internacional" class="btn btn-danger btn-saber-mas">Saber más</a> <!-- Botón alineado -->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mb-4">
+              <div class="card">
+                <img src="./img/transit maritime et aerien612x612.jpg" class="card-img-top" alt="Tránsito Marítimo y Aéreo">
+                <div class="card-body">
+                  <h5 class="card-title">Tránsito Marítimo y Aéreo</h5>
+                  <p class="card-text"><br>Servicios de transporte por mar y aire.</p>
+                  <br>
+                  <br>
+                  <br>
+                  <a href="#transito" class="btn btn-danger btn-saber-mas">Saber más</a> <!-- Botón alineado -->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mb-4">
+              <div class="card">
+                <img src="./img/service de messagerie expre.jpg" class="card-img-top" alt="Asesoramiento en Comercio Internacional">
+                <div class="card-body">
+                  <h5 class="card-title">Asesoramiento en Comercio Internacional</h5>
+                  <p class="card-text">Consejos expertos para tu negocio internacional.<br><br></p>
+                  <a href="#asesoramiento" class="btn btn-danger btn-saber-mas">Saber más</a> <!-- Botón alineado -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- Sección de texto e imagen 1 -->
+  <section class="info-section">
+    <div class="info-section-text">
+      <h3>Porque en el envío hay mucho más que mercancía: hay sueños, compromisos y clientes que esperan.</h3>
+      <p class="highlight">Gestión Integral del Transporte.</p>
+    </div>
+    <img src="./img/cam img1 plein .jpg" alt="Gestión Integral del Transporte" />
+  </section>
+
+  <!-- Sección de texto e imagen 2 -->
+  <section class="info-section">
+    <div class="info-section-text">
+      <h3>Su carga, en buenas manos desde el primer kilómetro.</h3>
+      <p>Coordinamos y optimizamos cada etapa del transporte, desde la recepción hasta la entrada final. Diseñando rutas eficientes, seleccionamos a los mejores operadores y supervisores en cada movimiento para vender su mercancía de forma rápida, segura y sin sorpresas. Nosotros decidimos el destino, nuestras decisiones son posibles.</p>
+      <hr>
+      <p class="highlight">Transporte Nacional e Internacional por Carretera</p>
+      <p>Conecte sus negociaciones con el mundo, calle a calle. Ya sea por mar o a través de fronteras, ofrecemos nuestras soluciones de transporte terrestre adaptadas a sus necesidades. Flotas modernas, seguimiento en tiempo real y un equipo atento a las emergencias en cada envío. Porque tu logística no tiene fronteras, y nuestros sellos.</p>
+    </div>
+    <img src="./img/camion 2 image 2.jpg" alt="Transporte Nacional e Internacional" />
+  </section>
+
+  <hr>
+
+  <!-- Nueva sección: Servicios Transitarios -->
+  <section class="info-section">
+    <div class="info-section-text">
+      <h3 class="highlight">Servicios Transitarios: Marítimo y Aéreo</h3>
+      <p>Si el mar o el cielo están en el camino, nosotros también tenemos el camino. Gestión de sus envíos internacionales por mar y aire con precisión y experiencia. Coordinación a bordo, documentación y aduanas para sus productos a través de océanos y continentes sin complicaciones. Contenedores completos con carga urgente. Usted comercia globalmente y lo ha adquirido.</p>
+    </div>
+    <img src="./img/transite air et mer hip-and-cargo-plane.jpg" alt="Servicios Transitarios" />
+  </section>
+
+  <hr>
+
+  <!-- Nueva sección: Asesoramiento en Comercio Internacional -->
+  <section class="info-section">
+    <div class="info-section-text">
+      <h3 class="highlight">Asesoramiento en Comercio Internacional</h3>
+      <p>Exporte con confianza, importe con estrategia. Le acompañamos en cada paso del proceso de internacionalización: estándares, documentación, acuerdos comerciales, Incoterms y más. Convirtiendo la integridad del comercio exterior en oportunidades claras y rentables. Si desea ampliar sus fronteras, le ayudamos a hacerlo con inteligencia logística.</p>
+    </div>
+    <img src="./img/asso international nd.jpg" alt="Asesoramiento en Comercio Internacional" />
+  </section>
+
+  <hr>
+
+  <!-- 📬 Contacto -->
+  <section id="contacto" class="bg-light py-5 fade-in">
+    <div class="container">
+      <h2 class="text-center mb-4">Contáctanos</h2>
+      <form class="row g-3">
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Nombre" required>
+        </div>
+        <div class="col-md-6">
+          <input type="email" class="form-control" placeholder="Correo electrónico" required>
+        </div>
+        <div class="col-12">
+          <textarea class="form-control" rows="4" placeholder="Mensaje" required></textarea>
+        </div>
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-danger">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- 🦶 Footer -->
+  <footer class="bg-dark text-white text-center py-3 fade-in">
+    <div class="container">
+      <div class="contact-box d-flex justify-content-between align-items-center">
+        <div class="contact-right text-center"> 
+            <img src="./img/logo 2/Logo 2.jpg" alt="Logotipo de la Empresa" class="logo" style="width: 100px;"> <!-- Logotipo añadido con tamaño de 100 px --> 
+          <p style="color: rgb(232, 13, 61);">JOSÉ CARLOS GALÁN VALLS</p>
+          <a href="tel:+34686462806" style="color: rgb(254, 248, 249);"><i class="fas fa-phone-alt" style="color: red;"></i> (+34) 686 462 806</a> <!-- Cambiado a rojo -->
+          <a href="mailto:franpuig2@yahoo.com" style="color: rgb(244, 244, 244);"><i class="fas fa-envelope" style="color: red;"></i> franpuig2@yahoo.com</a> <!-- Cambiado a rojo -->
+        </div>
+        <div class="links text-white">
+          <a href="#integral-management">Gestión Integral del Transporte</a>
+          <a href="#transporte-nacional">Transporte Nacional e Internacional</a>
+          <a href="#servicios-transito">Servicios Marítimos: Marítimos y Aéreos</a>
+          <a href="#asesoramiento">Consultoría en Comercio Internacional</a>
+        </div>
+        <div class="contact-left text-orange">
+          <p style="color: orange; font-weight: bold;">Gestión logística que te apoya, te entiende y te impulsa a progresar</p>
+          <div class="social-icons mt-2">
+            <a href="https://www.facebook.com/dirmensajeria" target="_blank" class="me-2">
+              <i class="fab fa-facebook-f" style="color: red;"></i>
+            </a>
+            <a href="https://www.instagram.com/dirmensajeria" target="_blank" class="me-2">
+              <i class="fab fa-instagram" style="color: red;"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/dir-mensajeria-transporte-urgente-y-logistica/" target="_blank" class="me-2">
+              <i class="fab fa-linkedin-in" style="color: red;"></i>
+            </a>
+            <a href="#" target="_blank">
+              <i class="fas fa-home" style="color: red;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="mb-0">&copy; 2025 Nombre de la Empresa. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Activación de animaciones al hacer scroll -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
